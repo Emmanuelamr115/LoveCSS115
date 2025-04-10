@@ -1,0 +1,70 @@
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: #ffe6f2; /* Fondo rosado claro */
+}
+
+.contenedor-corazon {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+/* Estilo del corazón */
+.corazon {
+    font-size: 100px;
+    position: absolute;
+    /* Animaciones encadenadas: mover -> latir -> llenarse */
+    animation: 
+        mover 5s forwards,
+        latido 0.8s 5s infinite alternate,
+        llenar 3s 8s forwards;
+    transform-origin: center;
+    color: rgba(255, 0, 0, 0.3); /* Rojo semitransparente al inicio */
+}
+
+/* Estilo del mensaje */
+.mensaje {
+    position: absolute;
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    color: #ff0000;
+    opacity: 0; /* Inicialmente invisible */
+    animation: aparecer 1s 11s forwards; /* Aparece al final */
+    text-align: center;
+    width: 100%;
+    top: 110%; /* Posición debajo del corazón */
+}
+
+/* Animación de movimiento */
+@keyframes mover {
+    0% { top: -100px; left: -100px; }
+    20% { top: 20vh; left: 80vw; }
+    40% { top: 80vh; left: 60vw; }
+    60% { top: 40vh; left: 10vw; }
+    80% { top: 10vh; left: 40vw; }
+    100% { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+/* Animación de latido */
+@keyframes latido {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* Animación de llenado de color */
+@keyframes llenar {
+    0% { color: rgba(255, 0, 0, 0.3); }
+    100% { color: rgba(255, 0, 0, 1); }
+}
+
+/* Animación de aparición del mensaje */
+@keyframes aparecer {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
