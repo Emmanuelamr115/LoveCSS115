@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corazón Animado</title>
-    <!-- Enlaza el archivo CSS -->
+    <title>Para Mon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Contenedor principal -->
-    <div class="contenedor-corazon">
-        <!-- Corazón y mensaje -->
-        <div class="corazon">❤️</div>
-        <div class="mensaje">¡Te amo!</div>
-    </div>
+    <div class="corazon">❤️</div>
+    <div class="mensaje"></div>
+
+    <script>
+        // Efecto de escritura letra por letra
+        const mensaje = "Te amo mucho mon";
+        const elementoMensaje = document.querySelector('.mensaje');
+        
+        setTimeout(() => {
+            let i = 0;
+            const escribir = setInterval(() => {
+                elementoMensaje.textContent += mensaje[i];
+                i++;
+                if (i === mensaje.length) clearInterval(escribir);
+            }, 150);
+        }, 4000);
+    </script>
 </body>
 </html>
